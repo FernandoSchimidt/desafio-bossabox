@@ -1,46 +1,49 @@
+# Desafio BossaBox
 
-Desafio BossaBox
 Este é um projeto desenvolvido como parte do Desafio BossaBox, utilizando Spring Boot para o backend e documentação com Swagger para facilitar o entendimento da API.
 
-Tecnologias Utilizadas
-Spring Boot
-MongoDB
-Swagger
-React
-Redux
-Axios
-Styled Components
-Pré-requisitos
+## Tecnologias Utilizadas
+
+- Spring Boot
+- MySql
+- Swagger
+- Docker
+- Angular
+- Styled Components
+
+## Pré-requisitos
+
 Antes de começar, certifique-se de ter o Java e o MongoDB instalados em sua máquina.
 
-Instalação e Configuração
+## Instalação e Configuração
+
 Siga os passos abaixo para instalar e configurar o projeto:
 
-Clone este repositório:
-bash
-Copy code
-git clone https://github.com/FernandoSchimidt/desafio-bossabox.git
+1. Clone este repositório:
+
+   ```bash
+   git clone https://github.com/FernandoSchimidt/desafio-bossabox.git
 Acesse o diretório do backend:
 bash
-Copy code
+
 cd desafio-bossabox/backend
 Configure as variáveis de ambiente no arquivo application.properties, conforme necessário.
 Inicie o servidor backend:
 bash
-Copy code
+
 ./mvnw spring-boot:run
 Acesse a documentação da API no navegador: http://localhost:8080/swagger-ui.html
 Abra uma nova janela do terminal e acesse o diretório do frontend:
 bash
-Copy code
+
 cd ../frontend
 Instale as dependências do frontend:
 bash
-Copy code
+
 npm install
 Inicie o servidor frontend:
 bash
-Copy code
+
 npm start
 Acesse a aplicação no navegador: http://localhost:3000
 Uso
