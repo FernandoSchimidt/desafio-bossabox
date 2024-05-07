@@ -1,0 +1,20 @@
+<nav class="navbar navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand">Tools</a>
+    <form [formGroup]="submitForm" class="d-flex">
+      <input
+        class="form-control me-2"
+        type="search"
+        formControlName="tag"
+        placeholder="Search"
+        aria-label="Search"
+      />
+      <button class="btn btn-outline-success" (click)="submit()" type="submit">
+        Search
+      </button>
+    </form>
+  </div>
+</nav>
+
+<router-outlet />
+<app-tools [tag]="tag" #toolsComponent></app-tools>

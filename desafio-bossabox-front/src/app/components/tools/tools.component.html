@@ -1,0 +1,139 @@
+<div class="container">
+  <div class="form">
+    <form [formGroup]="toolsForm">
+      <h1>New Tool</h1>
+      <div class="mb-3">
+        <label for="title" class="form-label">Title</label>
+        <input
+          type="text"
+          formControlName="title"
+          class="form-control"
+          id="title"
+          name="title"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="link" class="form-label">Link</label>
+        <input
+          type="text"
+          formControlName="link"
+          class="form-control"
+          id="link"
+          name="link"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="description" class="form-label">Descripton</label>
+        <input
+          type="text"
+          formControlName="description"
+          class="form-control"
+          id="description"
+          name="description"
+        />
+      </div>
+
+      <div class="mb-3">
+        <label for="tags" class="form-label">Tags</label>
+        <div class="input" style="display: flex; align-items: center">
+          <input
+            type="text"
+            class="form-control"
+            formControlName="tags"
+            id="tags"
+            name="tags"
+          /><i
+            style="margin-left: 5px; cursor: pointer"
+            (click)="createTags()"
+            class="fa-solid fa-plus add"
+          ></i>
+        </div>
+        <div
+          class="tags"
+          style="
+            display: flex;
+            justify-content: flex-start;
+            gap: 5px;
+            margin: 10px;
+          "
+        >
+          @for(tag of tags;track tag){
+          <p
+            style="
+              display: block;
+              background-color: lightgray;
+              color: black;
+              border-radius: 5px;
+              padding: 0 7px;
+            "
+          >
+            {{ tag }}
+            <i class="fa-solid fa-xmark" (click)="removeTag(tag.indexOf)"></i>
+          </p>
+          }
+        </div>
+      </div>
+
+      <button type="submit" (click)="create()" class="btn btn-primary">
+        Save
+      </button>
+    </form>
+  </div>
+  <div class="table table-bordered mt-3">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">title</th>
+          <th scope="col">link</th>
+          <th scope="col">description</th>
+          <th scope="col">tags</th>
+          <th scope="col">actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for(tool of tools; track tool){
+        <tr>
+          <th>{{ tool.id }}</th>
+          <td>{{ tool.title }}</td>
+          <td>{{ tool.link }}</td>
+          <td>{{ tool.description }}</td>
+
+          <td>
+            @for(tag of tool.tags; track tag){
+
+            <span
+              style="
+                display: block;
+                background-color: gray;
+                color: white;
+                margin: 2px;
+                border-radius: 4px;
+                text-align: center;
+                padding: 1px;
+              "
+            >
+              {{ tag }}
+            </span>
+            }
+          </td>
+          <td>
+            <button
+              (click)="deleteTool(tool.id)"
+              style="
+                border: none;
+                text-decoration: none;
+                background-color: white;
+              "
+            >
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </td>
+        </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>
+
+{{ tag }}

@@ -1,0 +1,19 @@
+.container{
+  margin: 20px;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+.add{
+  background-color: rgb(212, 255, 148);
+  padding: 15px;
+  border-radius: 50%;
+  transition: all ease-in-out .3s;
+}
+.add:hover{
+  background-color: rgb(165, 255, 30);
+
+}
+.form{
+  width: 600px;
+}
