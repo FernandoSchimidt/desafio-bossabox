@@ -2,6 +2,7 @@
   <div class="form">
     <form [formGroup]="toolsForm">
       <h1>New Tool</h1>
+      <hr />
       <div class="mb-3">
         <label for="title" class="form-label">Title</label>
         <input
@@ -79,7 +80,9 @@
       </button>
     </form>
   </div>
-  <div class="table table-bordered mt-3">
+  <div class="tablee">
+    <h1 class="mb-3">Tools</h1>
+    <hr />
     <table class="table">
       <thead>
         <tr>
@@ -135,5 +138,3 @@
     </table>
   </div>
 </div>
-
-{{ tag }}
