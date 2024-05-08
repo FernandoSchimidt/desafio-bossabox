@@ -8,12 +8,21 @@ import {
 } from '@angular/forms';
 import { ToolService } from '../../services/tool.service';
 import { Tools } from './Tools';
-import { ModalComponent } from './modal/modal.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import {
+  MatDialog,
+  MatDialogRef,
+  MatDialogActions,
+  MatDialogClose,
+  MatDialogTitle,
+  MatDialogContent,
+} from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-tools',
   standalone: true,
-  imports: [FormsModule, ReactiveFormsModule, ModalComponent],
+  imports: [FormsModule, ReactiveFormsModule, MatDialogModule],
   templateUrl: './tools.component.html',
   styleUrl: './tools.component.scss',
 })
@@ -25,7 +34,8 @@ export class ToolsComponent {
   tags: string[] = [];
   constructor(
     private fb: FormBuilder,
-    private service: ToolService
+    private service: ToolService,
+    public dialog: MatDialog
   ) {
     this.toolsForm = this.fb.group({
       title: ['', [Validators.required]],
@@ -99,7 +109,30 @@ export class ToolsComponent {
       }
     );
   }
-  // openModal(id: any) {
-  //   const modalRef = this.modalService.open(ModalComponent, { centered: true });
-  // }
+  openDialog(
+    enterAnimationDuration: string,
+    exitAnimationDuration: string
+  ): void {
+    this.dialog.open(DialogAnimationsExampleDialog, {
+      width: '250px',
+      enterAnimationDuration,
+      exitAnimationDuration,
+    });
+  }
+}
+
+@Component({
+  selector: 'dialog-animations-example-dialog',
+  templateUrl: 'dialog.html',
+  standalone: true,
+  imports: [
+    MatButtonModule,
+    MatDialogActions,
+    MatDialogClose,
+    MatDialogTitle,
+    MatDialogContent,
+  ],
+})
+export class DialogAnimationsExampleDialog {
+  constructor(public dialogRef: MatDialogRef<DialogAnimationsExampleDialog>) {}
 }

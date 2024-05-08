@@ -7,11 +7,18 @@ import {
   FormsModule,
   ReactiveFormsModule,
 } from '@angular/forms';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, ToolsComponent, FormsModule, ReactiveFormsModule],
+  imports: [
+    RouterOutlet,
+    ToolsComponent,
+    FormsModule,
+    ReactiveFormsModule,
+    MatDialogModule,
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
