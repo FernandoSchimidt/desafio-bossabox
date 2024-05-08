@@ -8,12 +8,12 @@ import {
 } from '@angular/forms';
 import { ToolService } from '../../services/tool.service';
 import { Tools } from './Tools';
-import { Observable } from 'rxjs';
+import { ModalComponent } from './modal/modal.component';
 
 @Component({
   selector: 'app-tools',
   standalone: true,
-  imports: [FormsModule, ReactiveFormsModule],
+  imports: [FormsModule, ReactiveFormsModule, ModalComponent],
   templateUrl: './tools.component.html',
   styleUrl: './tools.component.scss',
 })
@@ -23,7 +23,10 @@ export class ToolsComponent {
   toolsForm: FormGroup;
   tools: Tools[] = [];
   tags: string[] = [];
-  constructor(private fb: FormBuilder, private service: ToolService) {
+  constructor(
+    private fb: FormBuilder,
+    private service: ToolService
+  ) {
     this.toolsForm = this.fb.group({
       title: ['', [Validators.required]],
       link: ['', [Validators.required]],
@@ -82,16 +85,21 @@ export class ToolsComponent {
   }
 
   findByTag(tag: any) {
+    console.log(tag);
     if (tag == null || tag == '' || tag == undefined) {
       this.findAll();
     }
     this.service.findByTag(tag).subscribe(
       (res) => {
         this.tools = res;
+        this.tag = '';
       },
       (err) => {
         console.log(err);
       }
     );
   }
+  // openModal(id: any) {
+  //   const modalRef = this.modalService.open(ModalComponent, { centered: true });
+  // }
 }
