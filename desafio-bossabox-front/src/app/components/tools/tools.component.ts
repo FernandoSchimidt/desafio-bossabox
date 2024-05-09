@@ -9,15 +9,6 @@ import {
 import { ToolService } from '../../services/tool.service';
 import { Tools } from './Tools';
 import { MatDialogModule } from '@angular/material/dialog';
-import {
-  MatDialog,
-  MatDialogRef,
-  MatDialogActions,
-  MatDialogClose,
-  MatDialogTitle,
-  MatDialogContent,
-} from '@angular/material/dialog';
-import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-tools',
@@ -32,11 +23,7 @@ export class ToolsComponent {
   toolsForm: FormGroup;
   tools: Tools[] = [];
   tags: string[] = [];
-  constructor(
-    private fb: FormBuilder,
-    private service: ToolService,
-    public dialog: MatDialog
-  ) {
+  constructor(private fb: FormBuilder, private service: ToolService) {
     this.toolsForm = this.fb.group({
       title: ['', [Validators.required]],
       link: ['', [Validators.required]],
@@ -86,6 +73,7 @@ export class ToolsComponent {
     this.service.delete(id).subscribe(
       (res) => {
         console.log(res);
+        this.findAll();
       },
       (err) => {
         console.log(err);
@@ -109,30 +97,4 @@ export class ToolsComponent {
       }
     );
   }
-  openDialog(
-    enterAnimationDuration: string,
-    exitAnimationDuration: string
-  ): void {
-    this.dialog.open(DialogAnimationsExampleDialog, {
-      width: '250px',
-      enterAnimationDuration,
-      exitAnimationDuration,
-    });
-  }
-}
-
-@Component({
-  selector: 'dialog-animations-example-dialog',
-  templateUrl: 'dialog.html',
-  standalone: true,
-  imports: [
-    MatButtonModule,
-    MatDialogActions,
-    MatDialogClose,
-    MatDialogTitle,
-    MatDialogContent,
-  ],
-})
-export class DialogAnimationsExampleDialog {
-  constructor(public dialogRef: MatDialogRef<DialogAnimationsExampleDialog>) {}
 }

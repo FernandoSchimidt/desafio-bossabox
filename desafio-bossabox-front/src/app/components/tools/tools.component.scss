@@ -5,6 +5,8 @@
   margin: 20px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
   gap: 10px;
 }
 
@@ -23,6 +25,7 @@
 .form {
   width: 300px;
   margin-right: 40px;
+  min-width: 300px;
 }
 
 .table {
